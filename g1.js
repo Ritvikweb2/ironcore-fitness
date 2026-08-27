@@ -69,7 +69,7 @@ console.log('📞 Contact: +91 98765 43210');
 
 
 // ============================================
-// FADE-IN ON SCROLL
+// FADE-IN ON SCROLL (Fixed for Mobile)
 // ============================================
 const fadeElements = document.querySelectorAll('.fade-in');
 
@@ -79,10 +79,26 @@ const fadeObserver = new IntersectionObserver((entries) => {
             entry.target.classList.add('visible');
         }
     });
-}, { threshold: 0.15 });
+}, { 
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'  // Triggers slightly before element enters viewport
+});
 
-fadeElements.forEach(el => fadeObserver.observe(el));
+fadeElements.forEach(el => {
+    // Force initial state
+    el.classList.remove('visible');
+    fadeObserver.observe(el);
+});
 
+// Also check on load for elements already in viewport
+window.addEventListener('load', function() {
+    fadeElements.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight) {
+            el.classList.add('visible');
+        }
+    });
+});
 
 
 
