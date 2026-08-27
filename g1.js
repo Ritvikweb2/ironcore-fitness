@@ -105,6 +105,38 @@ window.addEventListener('load', function() {
 
 
 
+// ============================================
+// BACK TO TOP BUTTON
+// ============================================
+const backToTopBtn = document.getElementById('backToTop');
+
+window.addEventListener('scroll', function() {
+    if (window.scrollY > 400) {
+        backToTopBtn.classList.add('show');
+    } else {
+        backToTopBtn.classList.remove('show');
+    }
+});
+
+backToTopBtn.addEventListener('click', function() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
