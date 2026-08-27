@@ -64,3 +64,41 @@ cards.forEach(card => {
 
 console.log('💪 IronCore Fitness - Gym in Vijay Nagar, Indore');
 console.log('📞 Contact: +91 98765 43210');
+
+
+
+
+// ============================================
+// FADE-IN ON SCROLL
+// ============================================
+const fadeElements = document.querySelectorAll('.fade-in');
+
+const fadeObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, { threshold: 0.15 });
+
+fadeElements.forEach(el => fadeObserver.observe(el));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
